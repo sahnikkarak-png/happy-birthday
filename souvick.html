@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Happy Birthday Brother</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+            background: #120014;
+            height: 100vh;
+            color: white;
+        }
+        /* Animated Gradient Background */
+        
+        .bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top left, #ff0055 0%, transparent 25%), radial-gradient(circle at bottom right, #ff4d6d 0%, transparent 30%), radial-gradient(circle at center, #800f2f 0%, transparent 35%), #120014;
+            animation: bgMove 10s infinite alternate ease-in-out;
+            z-index: -3;
+        }
+        
+        @keyframes bgMove {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.1);
+            }
+        }
+        /* Floating Glow Orbs */
+        
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.5;
+            animation: float 8s infinite ease-in-out;
+        }
+        
+        .orb1 {
+            width: 300px;
+            height: 300px;
+            background: #ff0055;
+            top: -80px;
+            left: -80px;
+        }
+        
+        .orb2 {
+            width: 250px;
+            height: 250px;
+            background: #ff4d6d;
+            bottom: -80px;
+            right: -80px;
+            animation-delay: 3s;
+        }
+        
+        .orb3 {
+            width: 180px;
+            height: 180px;
+            background: #ff8fa3;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: 4s;
+        }
+        
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-30px);
+            }
+        }
+        /* Center Container */
+        
+        .container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+        /* Countdown */
+        
+        #countdown {
+            font-size: 180px;
+            font-weight: 700;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+            animation: zoom 1s infinite;
+        }
+        
+        @keyframes zoom {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        /* Open Button */
+        
+        #openBtn {
+            display: none;
+        }
+        
+        .btn {
+            padding: 18px 45px;
+            border: none;
+            border-radius: 60px;
+            font-size: 22px;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            backdrop-filter: blur(15px);
+            cursor: pointer;
+            transition: 0.4s;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            background: rgba(255, 255, 255, 0.25);
+        }
+        /* Birthday Card */
+        
+        .card {
+            display: none;
+            width: 100%;
+            max-width: 1200px;
+            height: 700px;
+            border-radius: 35px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: cardShow 2s ease;
+            position: relative;
+        }
+        
+        @keyframes cardShow {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        /* Split Layout */
+        
+        .left {
+            width: 45%;
+            height: 100%;
+            float: left;
+            position: relative;
+        }
+        
+        .right {
+            width: 55%;
+            height: 100%;
+            float: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px;
+            text-align: left;
+        }
+        /* Brother Photo */
+        
+        .photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            animation: slowZoom 12s infinite alternate;
+        }
+        
+        @keyframes slowZoom {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(1.08);
+            }
+        }
+        /* Overlay */
+        
+        .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+        }
+        /* Text Styling */
+        
+        .topText {
+            letter-spacing: 4px;
+            font-size: 14px;
+            color: #ffccd5;
+            margin-bottom: 15px;
+        }
+        
+        .title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 90px;
+            line-height: 1;
+            color: white;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+        
+        .name {
+            font-size: 55px;
+            font-weight: 700;
+            color: #ffccd5;
+            margin-top: 10px;
+        }
+        
+        .message {
+            margin-top: 30px;
+            font-size: 20px;
+            line-height: 1.9;
+            color: #f5f5f5;
+        }
+        /* Music Button */
+        
+        .music {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            border: none;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+            z-index: 5;
+        }
+        
+        .music:hover {
+            transform: scale(1.1);
+        }
+        /* Floating Particles */
+        
+        .particles span {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: white;
+            border-radius: 50%;
+            animation: particles 8s linear infinite;
+            opacity: 0.5;
+        }
+        
+        .particles span:nth-child(1) {
+            left: 10%;
+            top: 90%;
+        }
+        
+        .particles span:nth-child(2) {
+            left: 25%;
+            top: 95%;
+        }
+        
+        .particles span:nth-child(3) {
+            left: 50%;
+            top: 92%;
+        }
+        
+        .particles span:nth-child(4) {
+            left: 75%;
+            top: 88%;
+        }
+        
+        .particles span:nth-child(5) {
+            left: 90%;
+            top: 94%;
+        }
+        
+        @keyframes particles {
+            from {
+                transform: translateY(0);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(-100vh);
+                opacity: 1;
+            }
+        }
+        /* Responsive */
+        
+        @media(max-width:900px) {
+            .card {
+                flex-direction: column;
+                height: auto;
+            }
+            .left,
+            .right {
+                width: 100%;
+                height: auto;
+            }
+            .left {
+                height: 350px;
+            }
+            .title {
+                font-size: 60px;
+            }
+            .name {
+                font-size: 38px;
+            }
+            .right {
+                padding: 35px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg"></div>
+
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+
+    <div class="particles">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- Music -->
+
+    <audio id="music" loop>
+    <source src="birthday-song.mp3" type="audio/mp3">
+</audio>
+
+    <button class="music" onclick="toggleMusic()">
+    🎵
+</button>
+
+    <div class="container">
+
+        <!-- Countdown -->
+
+        <div id="countdown">3</div>
+
+        <!-- Open Button -->
+
+        <div id="openBtn">
+
+            <button class="btn" onclick="openCard()">
+            Open The Birthday Experience ✨
+        </button>
+
+        </div>
+
+        <!-- Professional Birthday Card -->
+
+        <div class="card" id="card">
+
+            <div class="left">
+
+                <!-- Replace image.jpg with brother photo -->
+
+                <img src="image.jpeg" class="photo">
+
+                <div class="overlay"></div>
+
+            </div>
+
+            <div class="right">
+
+                <div class="topText">
+                    FOR THE BEST BROTHER IN THE WORLD
+                </div>
+
+                <div class="title">
+                    Happy Birthday
+                </div>
+
+                <div class="name">
+                    BROTHER ❤️
+                </div>
+
+                <div class="message">
+
+                    Some bonds are beyond words, beyond time and beyond distance. A brother is not just family — he is a forever friend, a protector, and one of life's greatest blessings.
+
+                    <br><br> May your life always shine with happiness, success, unforgettable memories and endless smiles. Thank you for always being amazing
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        /* Countdown */
+
+        let count = 3;
+
+        let countdown = document.getElementById("countdown");
+        let openBtn = document.getElementById("openBtn");
+
+        let timer = setInterval(() => {
+
+            count--;
+
+            if (count > 0) {
+
+                countdown.innerHTML = count;
+
+            } else if (count == 0) {
+
+                countdown.innerHTML = "✨";
+
+            } else {
+
+                clearInterval(timer);
+
+                countdown.style.display = "none";
+
+                openBtn.style.display = "block";
+
+            }
+
+        }, 1000);
+
+        /* Open Card */
+
+        function openCard() {
+
+            document.getElementById("openBtn").style.display = "none";
+
+            document.getElementById("card").style.display = "flex";
+
+            document.getElementById("music").play();
+
+        }
+
+        /* Music Control */
+
+        let music = document.getElementById("music");
+
+        function toggleMusic() {
+
+            if (music.paused) {
+
+                music.play();
+
+            } else {
+
+                music.pause();
+
+            }
+
+        }
+    </script>
+
+</body>
+
+</html>
